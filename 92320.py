@@ -3,7 +3,7 @@ import sys
 import os
 import Bio.PDB
 try:
-    os.chdir('C:\\Users\\mailk\\py4e')
+    os.chdir('/Users/kevin/KN_2020_Fundamentals/')
 except:
     pass
 def read_input():
@@ -27,4 +27,5 @@ def calculate_contacts(structure):
     the list of contacts.
     [NOTE: not sure if this should be a list or a dictionary...] """
     return None
+read_input()
 print('All Done')
