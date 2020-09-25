@@ -4,6 +4,7 @@ import os
 import Bio.PDB
 import numpy as np
 import math
+#kyle is big stinky poopy
 try:
     os.chdir('/Users/kevin/KN_2020_Fundamentals/')
 except:
