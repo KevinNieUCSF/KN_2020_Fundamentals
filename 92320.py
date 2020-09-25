@@ -1,19 +1,16 @@
 #! /usr/bin/env python3
+
 import sys
 import os
 import Bio.PDB
 import numpy as np
-import math
-try:
-    os.chdir('/Users/kevin/KN_2020_Fundamentals/')
-except:
-    pass
-def read_input():
+
+
+def read_input(input_file):
     """ Read the PDB-formatted input file and return a structure """
     from Bio.PDB import PDBParser
     while True:
         try:
-            input_file=str(input('PDB Filename:'))
             parser=PDBParser()
             structure=parser.get_structure("sample",input_file)
             break
@@ -21,8 +18,6 @@ def read_input():
             print('Invalid Filename, Please Try Again')
             continue
     return structure
-def magnitude(distvec):
-    return math.sqrt(sum(pow(element, 2) for element in distvec))
 
 def calculate_contacts(structure):
     """ For every pair of residues in the structure, find if the residues
@@ -31,17 +26,25 @@ def calculate_contacts(structure):
     [NOTE: not sure if this should be a list or a dictionary...] """
     clash=-2
     for atom in structure.get_atoms():
-        for btom in structure.get_atoms():
-            distvec=list(np.array(btom.get_coord()) - np.array(atom.get_coord()))
-            print(magnitude(distvec))
-            print('---')
-            if magnitude(distvec)<=4:
-                clash=clash+1
-                print('Clash Found')
-                print(clash)
-            else:
-                pass
+        if atom.get_name()=='CA' or atom.get_name()=='C' or atom.get_name=='N':
+            continue
+        else:
+            for btom in structure.get_atoms():
+                if btom.get_name()=='CA' or btom.get_name()=='C' or btom.get_name=='N':
+                    continue
+                else:
+                    dist= atom - btom
+                    if dist<=3:
+                        clash+=1
+                    else:
+                        pass
     return clash
-structure=read_input()
-print("Clash Score: "+str(calculate_contacts(structure)))
-print('All Done')
+def main():
+    try:
+        os.chdir('/Users/kevin/KN_2020_Fundamentals/')
+    except:
+        pass
+    input_file=input('Name of File, please:')
+    structure=read_input(input_file)
+    print("Clash Score: "+str(calculate_contacts(structure)))
+main()
