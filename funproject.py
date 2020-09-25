@@ -16,10 +16,9 @@ import numpy as np
 import scipy
 import matplotlib as plt
 import math
+"""this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" """
 
-#general pipeline
-
-def parsepdb(input_param):
+def parsepdb(input_param): #general pipeline, tentative
 """fetch files from pdb but filter out non zinc finger domain possessing ones, generate a method
 to count how many of a certain molmass appears, this generates a list. We are iterating over the entire
 database so I think this is most efficient"""
