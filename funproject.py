@@ -16,14 +16,25 @@ import numpy as np
 import scipy
 import matplotlib as plt
 import math
+import pypdb as pd
 """this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" """
 
-def parsepdb(input_param): #general pipeline, tentative
-"""fetch files from pdb but filter out non zinc finger domain possessing ones, generate a method
-to count how many of a certain molmass appears, this generates a list. We are iterating over the entire
-database so I think this is most efficient"""
+def parsepdb(inputquery1, inputquery2): #general pipeline, tentative
+    """fetch files from pdb but filter out non zinc finger domain possessing ones, generate a method
+    to count how many of a certain molmass appears, this generates a list. We are iterating over the entire
+    database so I think this is most efficient"""
+    query=pd.make_query(inputquery1, querytype='ExpTypeQuery')
+    for hit in pd.do_search(query):
+        print(hit)
     return None
 def graph(pdblist):
-"""generate a graph using the list generated from parsepdb"""
+    """generate a graph using the list generated from parsepdb"""
 def main():
-    pdblist=parsepdb(input_param)
+    #currently trying to get the query function in parsepdb() to do two search parameters at once but the code only accepts one search term and one
+    #query type, I think I will first look around to see any solutions and then email the coders
+    inputquery1=input('Please input the experimental method term (use "NMR"):')
+    inputquery2=input('Please input the advanced search term (use "zinc"):')
+    pdblist=parsepdb(inputquery1, inputquery2)
+    #graph(pdblist):
+main()
+#print(list(pd.get_info('1pvn'))
