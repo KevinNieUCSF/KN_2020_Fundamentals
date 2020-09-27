@@ -17,12 +17,19 @@ import scipy
 import matplotlib as plt
 import math
 import pypdb as pd
-"""this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" """
+"""
+this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" 
+
+
+a level of abstraction I am seeing here will be to have a parser that makes a list for each search term 
+then we have to do some sorting of each of those resulting lists (eg. remove duplicates and realy similar structure)
+and annotation maybe of the molecular weight for each of the structures. 
+finally we plot them out 
+
+"""
 
 def parsepdb(inputquery1, inputquery2): #general pipeline, tentative
-    """fetch files from pdb but filter out non zinc finger domain possessing ones, generate a method
-    to count how many of a certain molmass appears, this generates a list. We are iterating over the entire
-    database so I think this is most efficient"""
+    #fetch files from pdb that contain zinc, were collected by NMR, x-ray  generate a method; this generates a list?
     query=pd.make_query(inputquery1, querytype='ExpTypeQuery')
     for hit in pd.do_search(query):
         print(hit)
@@ -30,7 +37,7 @@ def parsepdb(inputquery1, inputquery2): #general pipeline, tentative
 
 
 def graph(pdblist):
-    """generate a graph using the list generated from parsepdb"""
+    #generate a graph using the list generated from parsepdb
 
 
 def pdbListFilter():
