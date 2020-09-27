@@ -28,7 +28,7 @@ finally we plot them out
 
 """
 
-def parsepdb(inputquery1, inputquery2): #general pipeline, tentative
+def parsepdb(inputquery): #general pipeline should call parsepdb for each query 
     #fetch files from pdb that contain zinc, were collected by NMR, x-ray  generate a method; this generates a list?
     query=pd.make_query(inputquery1, querytype='ExpTypeQuery')
     for hit in pd.do_search(query):
@@ -40,18 +40,28 @@ def graph(pdblist):
     #generate a graph using the list generated from parsepdb
 
 
-def pdbListFilter():
+def pdbListFilter(methodlist, advancedlist):
     #this function will take two search lists and merge for the final figure -- need to remove duplicate structures etc that "will impact further statistics"
+    
+	#basically this seems possible by just first removing from the output list those in the advanced list that are not also in the correct method list
+    advanced_method_list = if ():
+
+	#then we need to remove duplicates and potentially anotate those that appear under either a search for "xray artifact" or satisfy another function
+
+
+def xrayArtifactAnotate(zinc_xray_list):
 
 
 def main():
     #currently trying to get the query function in parsepdb() to do two search parameters at once but the code only accepts one search term and one
     #query type, I think I will first look around to see any solutions and then email the coders
-    inputquery1=input('Please input the experimental method term (use "NMR"):')
-    inputquery2=input('Please input the advanced search term (use "zinc"):')
-    pdblist=parsepdb(inputquery1, inputquery2)
+    methodquery=input('Please input the experimental method term (use "NMR"):')
+    advancedquery=input('Please input the advanced search term (use "zinc"):')
+
+    methodlist = parsepdb(methodquery)
+    advancedlist = parsepdb(advancedquery)
     
-    
+    pdbListFilter(methodlist, advancedlist)
 
     #graph(pdblist):
 
