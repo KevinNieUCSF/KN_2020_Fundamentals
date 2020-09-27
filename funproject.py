@@ -27,14 +27,28 @@ def parsepdb(inputquery1, inputquery2): #general pipeline, tentative
     for hit in pd.do_search(query):
         print(hit)
     return None
+
+
 def graph(pdblist):
     """generate a graph using the list generated from parsepdb"""
+
+
+def pdbListFilter():
+    #this function will take two search lists and merge for the final figure -- need to remove duplicate structures etc that "will impact further statistics"
+
+
 def main():
     #currently trying to get the query function in parsepdb() to do two search parameters at once but the code only accepts one search term and one
     #query type, I think I will first look around to see any solutions and then email the coders
     inputquery1=input('Please input the experimental method term (use "NMR"):')
     inputquery2=input('Please input the advanced search term (use "zinc"):')
     pdblist=parsepdb(inputquery1, inputquery2)
+    
+    
+
     #graph(pdblist):
+
+
+
 main()
 #print(list(pd.get_info('1pvn'))
