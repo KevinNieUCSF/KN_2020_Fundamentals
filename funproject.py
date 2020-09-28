@@ -19,22 +19,25 @@ import math
 import pypdb as pd
 """this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" """
 
-def parsepdb(inputquery1, inputquery2): #general pipeline, tentative
-    """fetch files from pdb but filter out non zinc finger domain possessing ones, generate a method
-    to count how many of a certain molmass appears, this generates a list. We are iterating over the entire
-    database so I think this is most efficient"""
-    query=pd.make_query(inputquery1, querytype='ExpTypeQuery')
-    for hit in pd.do_search(query):
-        print(hit)
+def parsepdb(inputquery1, inputquery2,inputquery3): #general pipeline, tentative
+    """fetch IDs from pdb that contain zinc, then compares the list to IDs which used NMR or xray, returns two
+    lists that contain zinc containing structures that used NMR or xray"""
+    querymain=pd.make_query(inputquery1, querytype='AdvancedKeywordQuery')
+    queryexp1=pd.make_query(inputquery2, querytype='ExpTypeQuery')
+    queryexp2=pd.make_query(inputquery3, querytype='ExpTypeQuery')
+    h=0
+    for hit in pd.do_search(querymain):
+        h+=1
+    print(h)
     return None
 def graph(pdblist):
     """generate a graph using the list generated from parsepdb"""
 def main():
     #currently trying to get the query function in parsepdb() to do two search parameters at once but the code only accepts one search term and one
     #query type, I think I will first look around to see any solutions and then email the coders
-    inputquery1=input('Please input the experimental method term (use "NMR"):')
-    inputquery2=input('Please input the advanced search term (use "zinc"):')
-    pdblist=parsepdb(inputquery1, inputquery2)
+    inputquery1=input('Please input the advanced search term (use "zinc"):')
+    inputquery2=input('Please input experimental method 1 (use "NMR"):')
+    inputquery3=input('Please input experimental method 1 (use "X-RAY"):')
+    pdblist=parsepdb(inputquery1, inputquery2,inputquery3)
     #graph(pdblist):
 main()
-#print(list(pd.get_info('1pvn'))
