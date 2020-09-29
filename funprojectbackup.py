@@ -124,7 +124,7 @@ def molcounternmr(test,nmr):
             nmr[35]+=1
         elif mol<=37500:
             nmr[37.5]+=1
-    except:
+    else:
         pass
     return nmr
 def molcounterxray(test,xray):
@@ -195,7 +195,7 @@ def molcounterxray(test,xray):
             xray[280]+=1
         elif mol<=1000000:
             xray[1000]+=1
-    except:
+    else:
         pass
     return xray
 def molcounterart(test,art):
@@ -266,7 +266,7 @@ def molcounterart(test,art):
             art[280]+=1
         elif mol<=1000000:
             art[1000]+=1
-    except:
+    else:
         pass
     return art
 def fetchmol(qnmrfinal,qxrayfinal,qartfinal):
