@@ -3,10 +3,10 @@
 import sys
 import numpy as np
 import scipy
-import matplotlib as plt
 import math
 import pypdb as pd
 import collections
+import matplotlib.pyplot as plt
 """this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" """
 
 def parsepdb(iqmain, iqart): #general pipeline, tentative
@@ -169,9 +169,10 @@ def main():
     qmainl,qartfinal=parsepdb(iqmain, iqart)
     qnmrfinal,qxrayfinal=pdblistfilter(qmainl,iqnmr,iqxray)
     nmr,xray,art=fetchmol(qnmrfinal,qxrayfinal,qartfinal)
-    #graph(nmr,xray,art)
+    graph(nmr,xray,art)
 
 main()
+
 """nmrmolrange=np.linspace(2.5,37.5,15,endpoint=True)
 nmr={i:0 for i in nmrmolrange}
 xrayartmolrange=np.linspace(20,280,14,endpoint=True)
