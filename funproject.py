@@ -9,6 +9,22 @@ import collections
 import matplotlib.pyplot as plt
 """this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" """
 
+"""if dict polymer is list
+def get_weight(polymer)
+    return polymer['@weight']
+
+def total_weight(pdb):
+polymer = pdb[polymer]
+total_weight = 0.0
+if type(polymer) is list:
+    for  poly in polymer:
+        total_weight = total_weight + get_weight(poly)
+else:
+    total_weight = get_weight(polymer)
+
+
+ """
+
 def parsepdb(iqmain, iqart): #general pipeline, tentative
     """fetch IDs from pdb that contain zinc, returns two list of IDs, one for zinc and one for zinc x-ray artifacts"""
     qmain=pd.make_query(iqmain, querytype='AdvancedKeywordQuery')
