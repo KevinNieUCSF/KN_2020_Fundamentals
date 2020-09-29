@@ -124,6 +124,7 @@ def molcounternmr(test,nmr):
             nmr[35]+=1
         elif mol<=37500:
             nmr[37.5]+=1
+    except:
         pass
     return nmr
 def molcounterxray(test,xray):
@@ -194,6 +195,8 @@ def molcounterxray(test,xray):
             xray[280]+=1
         elif mol<=1000000:
             xray[1000]+=1
+    except:
+        pass
     return xray
 def molcounterart(test,art):
     try:
@@ -263,6 +266,8 @@ def molcounterart(test,art):
             art[280]+=1
         elif mol<=1000000:
             art[1000]+=1
+    except:
+        pass
     return art
 def fetchmol(qnmrfinal,qxrayfinal,qartfinal):
     """gets the molecular weight of each hit for each generated ID list and then generates a count
@@ -278,7 +283,11 @@ def fetchmol(qnmrfinal,qxrayfinal,qartfinal):
     for hit in qnmrfinal:
         test=pd.get_all_info(hit)
         nmr=molcounternmr(test,nmr)
+    for hit in qxrayfinal:
+        test=pd.get_all_info(hit)
         xray=molcounterxray(test,xray)
+    for hit in qartfinal:
+        test=pd.get_all_info(hit)
         art=molcounterart(test,art)
     print("NMR Mol Weight Tally:"+str(nmr))
     print("Xray Mol Weight Tally:"+str(xray))
@@ -292,7 +301,7 @@ def graph(nmr,xray,art):
 
     return None
 def main():
-    iqmain="zinc"
+    iqmain="zinc finger"
     iqnmr="NMR"
     iqxray="X-RAY"
     iqart="zinc X-RAY artifact"
