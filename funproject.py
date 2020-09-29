@@ -7,6 +7,8 @@ import math
 import pypdb as pd
 import collections
 import matplotlib.pyplot as plt
+import pandas as pds
+
 """this code is made to recreate figure 1a and 1b from Laitaoja, et al. "Zinc Coordination Spheres in Protein Structures" """
 
 """if dict polymer is list
@@ -176,6 +178,8 @@ def fetchmol(qnmrfinal,qxrayfinal,qartfinal):
     return nmr, xray, art
 def graph(nmr,xray,art):
     """generate a graph using the dictionaries generated from parsepdb"""
+
+
     return None
 def main():
     iqmain="zinc"
