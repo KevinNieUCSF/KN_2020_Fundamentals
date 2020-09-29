@@ -301,7 +301,7 @@ def graph(nmr,xray,art):
 
     return None
 def main():
-    iqmain="zinc finger"
+    iqmain="zinc"
     iqnmr="NMR"
     iqxray="X-RAY"
     iqart="zinc X-RAY artifact"
