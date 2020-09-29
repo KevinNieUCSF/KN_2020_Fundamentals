@@ -178,7 +178,9 @@ def fetchmol(qnmrfinal,qxrayfinal,qartfinal):
     return nmr, xray, art
 def graph(nmr,xray,art):
     """generate a graph using the dictionaries generated from parsepdb"""
-
+    nmr_dataframe = pds.dataframe.from_dict(nmr)
+    xray_dataframe = pds.dataframe.from_dict(xray)
+    artifact_dataframe = pds.dataframe.from_dict(art)
 
     return None
 def main():
