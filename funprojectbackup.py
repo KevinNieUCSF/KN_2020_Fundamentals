@@ -297,19 +297,19 @@ def fetchmol(qnmrfinal,qxrayfinal,qartfinal):
             test=pd.get_all_info(hit)
             nmr=molcounternmr(test,nmr)
         except:
-            pass
+            continue
     for hit in qxrayfinal:
         try:
             test=pd.get_all_info(hit)
             xray=molcounterxray(test,xray)
         except:
-            pass
+            continue
     for hit in qartfinal:
         try:
             test=pd.get_all_info(hit)
             art=molcounterart(test,art)
         except:
-            pass
+            continue
     print("NMR Mol Weight Tally:"+str(nmr))
     print("Xray Mol Weight Tally:"+str(xray))
     print("Artifact Mol Weight Tally:"+str(art))
