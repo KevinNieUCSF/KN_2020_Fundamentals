@@ -293,14 +293,23 @@ def fetchmol(qnmrfinal,qxrayfinal,qartfinal):
     art={i:0 for i in xrayartmolrange}
     art[1000]=0
     for hit in qnmrfinal:
-        test=pd.get_all_info(hit)
-        nmr=molcounternmr(test,nmr)
+        try:
+            test=pd.get_all_info(hit)
+            nmr=molcounternmr(test,nmr)
+        except:
+            pass
     for hit in qxrayfinal:
-        test=pd.get_all_info(hit)
-        xray=molcounterxray(test,xray)
+        try:
+            test=pd.get_all_info(hit)
+            xray=molcounterxray(test,xray)
+        except:
+            pass
     for hit in qartfinal:
-        test=pd.get_all_info(hit)
-        art=molcounterart(test,art)
+        try:
+            test=pd.get_all_info(hit)
+            art=molcounterart(test,art)
+        except:
+            pass
     print("NMR Mol Weight Tally:"+str(nmr))
     print("Xray Mol Weight Tally:"+str(xray))
     print("Artifact Mol Weight Tally:"+str(art))
@@ -317,8 +326,11 @@ def main():
     iqnmr="NMR"
     iqxray="X-RAY"
     iqart="zinc X-RAY artifact"
+    print('Querying PDB...')
     qmainl,qartfinal=parsepdb(iqmain, iqart)
+    print('Filtering Lists...')
     qnmrfinal,qxrayfinal=pdblistfilter(qmainl,iqnmr,iqxray)
+    print("Fetching molweights...")
     nmr,xray,art=fetchmol(qnmrfinal,qxrayfinal,qartfinal)
     graph(nmr,xray,art)
 
