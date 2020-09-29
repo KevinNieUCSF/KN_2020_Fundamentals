@@ -89,6 +89,8 @@ def molcounternmr(test,nmr):
         elif (float(test['polymer']['@weight']))<=37500:
             nmr[37.5]+=1
     except:
+        pass
+    try:
         polymer=test['polymer']
         mol=0
         if type(polymer) is list:
@@ -124,6 +126,8 @@ def molcounternmr(test,nmr):
             nmr[35]+=1
         elif mol<=37500:
             nmr[37.5]+=1
+    except:
+        pass
     else:
         pass
     return nmr
@@ -160,6 +164,8 @@ def molcounterxray(test,xray):
         elif (float(test['polymer']['@weight']))<=1000000:
             xray[1000]+=1
     except:
+        pass
+    try:
         polymer=test['polymer']
         mol=0
         if type(polymer) is list:
@@ -195,6 +201,8 @@ def molcounterxray(test,xray):
             xray[280]+=1
         elif mol<=1000000:
             xray[1000]+=1
+    except:
+        pass
     else:
         pass
     return xray
@@ -231,6 +239,8 @@ def molcounterart(test,art):
         elif (float(test['polymer']['@weight']))<=1000000:
             art[1000]+=1
     except:
+        pass
+    try:
         polymer=test['polymer']
         mol=0
         if type(polymer) is list:
@@ -266,6 +276,8 @@ def molcounterart(test,art):
             art[280]+=1
         elif mol<=1000000:
             art[1000]+=1
+    except:
+        pass
     else:
         pass
     return art
