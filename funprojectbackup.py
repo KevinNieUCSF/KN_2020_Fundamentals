@@ -328,7 +328,7 @@ def graph(nmr,xray,art):
     nmr_plot = plt.bar(list(NMR.keys()), NMR.values(), color='b', tick_label=list(NMR.keys()))
     nmr_plot.show()
 
-    plt.bar(list(xray.keys()), xray.values(), color='b', width = 5)
+    plt.bar(list(xray.keys()), xray.values(), color='b', width = 5, tick_label=list(xray.keys()))
     arts = [x + 5 for x in list(art.keys())]
     plt.bar(arts, art.values(), color='r', width = 5)
     plt.xlim(0, 290)
