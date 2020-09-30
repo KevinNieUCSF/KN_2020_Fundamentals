@@ -326,13 +326,15 @@ def graph(nmr,xray,art):
 
 
     nmr_plot = plt.bar(list(NMR.keys()), NMR.values(), color='b', tick_label=list(NMR.keys()))
+    plt.rcParams["figure.figsize"] = (30,10)
     nmr_plot.show()
 
     plt.bar(list(xray.keys()), xray.values(), color='b', width = 5, tick_label=list(xray.keys()))
-    arts = [x + 5 for x in list(art.keys())]
-    plt.bar(arts, art.values(), color='r', width = 5)
-    plt.xlim(0, 290)
-    plt.ylim(0, 7500)
+    shifted = [x + 5 for x in list(art.keys())]
+    plt.bar(shifted, art.values(), color='r', width = 5)
+    plt.rcParams["figure.figsize"] = (25,4)
+    #plt.xlim(0, 290)
+    #plt.ylim(0, 7500)
     plt.show()
 
     return None
