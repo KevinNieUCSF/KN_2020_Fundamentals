@@ -320,11 +320,15 @@ def graph(nmr,xray,art):
     #xray_dataframe = pds.dataframe.from_dict(xray)
     #artifact_dataframe = pds.dataframe.from_dict(art)
 
-    plt.bar(list(NMR.keys()), NMR.values(), color='g')
-    plt.show()
+    NMR = {2.5: 18, 5.0: 265, 7.5: 207, 10.0: 246, 12.5: 139, 15.0: 92, 17.5: 70, 20.0: 59, 22.5: 18, 25.0: 13, 27.5: 7, 30.0: 14, 32.5: 4, 35.0: 0, 37.5: 0}
+    xray = {20.0: 2922, 40.0: 6710, 60.0: 4030, 80.0: 1022, 100.0: 498, 120.0: 395, 140.0: 79, 160.0: 43, 180.0: 49, 200.0: 47, 220.0: 60, 240.0: 11, 260.0: 3, 280.0: 6, 1000: 434}
+    art = {20.0: 94, 40.0: 192, 60.0: 121, 80.0: 22, 100.0: 21, 120.0: 22, 140.0: 0, 160.0: 0, 180.0: 1, 200.0: 8, 220.0: 0, 240.0: 0, 260.0: 0, 280.0: 0, 1000: 0}
 
 
-    plt.bar(list(xray.keys()), xray.values(), color='g', width = 5)
+    nmr_plot = plt.bar(list(NMR.keys()), NMR.values(), color='b', tick_label=list(NMR.keys()))
+    nmr_plot.show()
+
+    plt.bar(list(xray.keys()), xray.values(), color='b', width = 5)
     arts = [x + 5 for x in list(art.keys())]
     plt.bar(arts, art.values(), color='r', width = 5)
     plt.xlim(0, 290)
